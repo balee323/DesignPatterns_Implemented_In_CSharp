@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
 {
@@ -20,12 +18,15 @@ namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
         German
     }
 
+
     //This uses inheritance -- implementing via subclass classes
     public abstract class ComputerSystemFactory
     {
-        private Language _langauge = Language.English; //Defaults to English
+        protected Language _langauge = Language.English; //Defaults to English
         public abstract ComputerSystem CreateComputerSystem(SystemType systemType, Language language);
+        public abstract ComputerSystem CreateComputerSystem(SystemType systemType);
     }
+
 
     public class MobileComputerSystemFactory : ComputerSystemFactory
     {
@@ -41,8 +42,13 @@ namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
                 return new IPhone(Language.English, 80, 40);
             }
            
-            Console.WriteLine("Invalid mobile system, defaulting to Android");
+            //"Invalid mobile system, defaulting to Android";
             return new Android(Language.English, 80, 30);
+        }
+
+        public override ComputerSystem CreateComputerSystem(SystemType systemType)
+        {
+            return CreateComputerSystem(systemType, base._langauge);
         }
     }
 
@@ -63,12 +69,15 @@ namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
                 return new OneHertzSystem(language);
             }
 
-            Console.WriteLine("Invalid mobile system, defaulting to IBM");
+            //"Invalid mobile system, defaulting to IBM";
             return new IBM(Language.English);
         }
 
+        public override ComputerSystem CreateComputerSystem(SystemType systemType)
+        {
+            return CreateComputerSystem(systemType, base._langauge);
+        }
+
     }
-
-
 
 }

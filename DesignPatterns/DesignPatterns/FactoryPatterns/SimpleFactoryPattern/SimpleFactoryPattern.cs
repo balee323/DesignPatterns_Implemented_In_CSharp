@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatterns.FactoryPattern
+namespace DesignPatterns.FactoryPattern.SimpleFactoryPattern
 {
     class SimpleFactoryPattern
     {
