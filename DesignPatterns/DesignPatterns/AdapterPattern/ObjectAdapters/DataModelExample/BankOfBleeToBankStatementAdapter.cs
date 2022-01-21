@@ -31,11 +31,11 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
             }                      
         }
 
-        public override string AccountType
-        {
-            get => _bankOfBleeStatement.Type; 
-            set => _bankOfBleeStatement.Type = value; 
-        }
+        //public override string AccountType
+        //{
+        //    get => _bankOfBleeStatement.Type; 
+        //    set => _bankOfBleeStatement.Type = value; 
+        //}
 
         public override DateTime AccountCreatedOn
         { 

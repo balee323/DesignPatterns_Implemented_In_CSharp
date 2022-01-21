@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.AdapterPattern.ObjectAdapters.DataModelExample;
 using DesignPatterns.Examples_of_use;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.FactoryPatterns.FactoryMethodPattern;
@@ -15,13 +16,17 @@ namespace DesignPatterns
 
 
             //**Factory Design Pattern(s)
-            TheProblem theProblem = new TheProblem();
-            theProblem.PurchaseDuck(Senario.Hunting);
+            //TheProblem theProblem = new TheProblem();
+            //theProblem.PurchaseDuck(Senario.Hunting);
             ClearConsole();
 
             new FactoryMethodPatternInAction().ShowAllComputerDisplays();
 
             ClearConsole();
+
+
+            //**Adapter Pattern
+           // new DataModelAdapter_InAction().GetBankStatement();
 
 
 

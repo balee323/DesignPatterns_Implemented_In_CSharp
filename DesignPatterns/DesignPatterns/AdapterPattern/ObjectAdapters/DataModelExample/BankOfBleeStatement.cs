@@ -8,7 +8,6 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Type { get; set; }
         public DateTime AccountBeganOn { get; set; }
         public List<BleeTransaction> BleeTransactions { get; set; }
     }
