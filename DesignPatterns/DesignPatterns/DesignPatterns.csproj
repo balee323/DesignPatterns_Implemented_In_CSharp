@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="AdapterPattern\ClassAdapters\" />
     <Folder Include="NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

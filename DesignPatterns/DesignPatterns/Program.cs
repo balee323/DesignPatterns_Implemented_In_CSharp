@@ -19,8 +19,7 @@ namespace DesignPatterns
             theProblem.PurchaseDuck(Senario.Hunting);
             ClearConsole();
 
-
-           //new FactoryMethodPatternInAction().ShowAllComputerDisplays();
+            new FactoryMethodPatternInAction().ShowAllComputerDisplays();
 
             ClearConsole();
 
