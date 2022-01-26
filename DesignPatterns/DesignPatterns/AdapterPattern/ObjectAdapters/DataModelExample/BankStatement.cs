@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DesignPatterns.AdapterPattern.ObjectAdapters
 {
@@ -16,12 +15,6 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
     {
         public virtual decimal Amount { get; set; }
         public virtual DateTime Date { get; set; }
-    }
-
-    public enum TranType
-    {
-        Debit,
-        Credit
     }
 
 }

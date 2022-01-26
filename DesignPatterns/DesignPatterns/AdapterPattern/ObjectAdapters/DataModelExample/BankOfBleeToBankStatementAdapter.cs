@@ -31,11 +31,11 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
             }                      
         }
 
-        //public override string AccountType
-        //{
-        //    get => _bankOfBleeStatement.Type; 
-        //    set => _bankOfBleeStatement.Type = value; 
-        //}
+        public override string AccountType
+        {
+            get => _bankOfBleeStatement.Type;
+            set => _bankOfBleeStatement.Type = value;
+        }
 
         public override DateTime AccountCreatedOn
         { 
@@ -52,9 +52,9 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
                 foreach (BleeTransaction bleeTran in _bankOfBleeStatement.BleeTransactions)
                 {
                     Tran tran = new Tran();
-                    if(bleeTran.Type == TranType.Debit)
+                    if(bleeTran.Type == TransactionType.Debit)
                     {
-                        tran.Amount = -(bleeTran.Amount);
+                        tran.Amount = -(bleeTran.Amount); //make negative
                     }
                     else
                     {
@@ -82,11 +82,11 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
 
                     if(tran.Amount < 0)
                     {
-                        bleeTransaction.Type = TranType.Debit;
+                        bleeTransaction.Type = TransactionType.Debit;
                     }
                     else
                     {
-                        bleeTransaction.Type = TranType.Credit;
+                        bleeTransaction.Type = TransactionType.Credit;
                     }
                     
                     bleeTransaction.Amount = Math.Abs(tran.Amount);

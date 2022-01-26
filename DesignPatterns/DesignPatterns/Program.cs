@@ -20,13 +20,13 @@ namespace DesignPatterns
             //theProblem.PurchaseDuck(Senario.Hunting);
             ClearConsole();
 
-            new FactoryMethodPatternInAction().ShowAllComputerDisplays();
+            //new FactoryMethodPatternInAction().ShowAllComputerDisplays();
 
             ClearConsole();
 
 
             //**Adapter Pattern
-           // new DataModelAdapter_InAction().GetBankStatement();
+            var bankStatement =  new DataModelAdapter_InAction().GetBankStatement();
 
 
 
