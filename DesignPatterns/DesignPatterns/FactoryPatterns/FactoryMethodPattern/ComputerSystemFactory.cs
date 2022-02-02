@@ -22,7 +22,7 @@ namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
     //This uses inheritance -- implementing via subclass classes
     public abstract class ComputerSystemFactory
     {
-        protected Language _langauge = Language.English; //Defaults to English
+        protected Language _language = Language.English; //Defaults to English
         public abstract ComputerSystem CreateComputerSystem(SystemType systemType, Language language);
         public abstract ComputerSystem CreateComputerSystem(SystemType systemType);
     }
@@ -35,20 +35,20 @@ namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
 
             if (systemType == SystemType.Android)
             {
-                return new Android(Language.German, 80, 30); //additional settings can be abstracted away
+                return new Android(language, 80, 30); //additional settings can be abstracted away
             }
             if (systemType == SystemType.Iphone)
             {
-                return new IPhone(Language.English, 80, 40);
+                return new IPhone(language, 80, 40);
             }
            
             //"Invalid mobile system, defaulting to Android";
-            return new Android(Language.English, 80, 30);
+            return new Android(language, 80, 30);
         }
 
         public override ComputerSystem CreateComputerSystem(SystemType systemType)
         {
-            return CreateComputerSystem(systemType, base._langauge);
+            return CreateComputerSystem(systemType, base._language);
         }
     }
 
@@ -75,7 +75,7 @@ namespace DesignPatterns.FactoryPatterns.FactoryMethodPattern
 
         public override ComputerSystem CreateComputerSystem(SystemType systemType)
         {
-            return CreateComputerSystem(systemType, base._langauge);
+            return CreateComputerSystem(systemType, base._language);
         }
 
     }

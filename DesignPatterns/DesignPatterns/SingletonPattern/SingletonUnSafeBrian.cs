@@ -7,9 +7,9 @@ namespace DesignPatterns
     //Singleton Pattern (not thread safe)
     public class SingletonUnSafeBrian
     {
-        //this must be static since the a static method uses this variable
         private static SingletonUnSafeBrian _singletonUnSafeBrian = null;
 
+        //notice use of private constructor
         private SingletonUnSafeBrian() {}
 
         public static SingletonUnSafeBrian GetBrian

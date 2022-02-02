@@ -8,7 +8,8 @@
 
   <ItemGroup>
     <Folder Include="AdapterPattern\ClassAdapters\" />
-    <Folder Include="NewFolder\" />
+    <Folder Include="StatePattern\" />
+    <Folder Include="StrategyPattern\" />
   </ItemGroup>
 
   <ItemGroup>

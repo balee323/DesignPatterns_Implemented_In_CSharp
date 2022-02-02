@@ -15,17 +15,12 @@ namespace DesignPatterns.StockGrabber.MultiDecorator.Tests
         public void Setup()
         {
 
-            MemoryCacheOptions memoryCacheOptions = new MemoryCacheOptions()
-            {
-            };
-
-            IMemoryCache memoryCache = new MemoryCache(memoryCacheOptions);
+            IMemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
 
             //build it like an onion
             IAlphaVantageClient client = new AlphaVantageClient();
             IAlphaVantageClient clientWithLogger = new AlphaVantageLoggingDecorator(client);
             _clientWithCache = new AlphaVantageCachingDecorator(clientWithLogger, memoryCache);
-
         }
 
         [Test]
@@ -41,18 +36,6 @@ namespace DesignPatterns.StockGrabber.MultiDecorator.Tests
 
             Assert.IsNotNull(stockdata);
         }
-
-
-        [Test]
-        public async Task Get_AmdStockPrice_StockPrice_and_AMD_NotNull()
-        {
-            var stockdata = await _clientWithCache.GetLatestStockData("AMD");
-
-            Assert.IsTrue(stockdata.Item2.Symbol == "AMD");
-            Assert.IsNotNull(stockdata.Item1.High);
-
-        }
-
 
     }
 }

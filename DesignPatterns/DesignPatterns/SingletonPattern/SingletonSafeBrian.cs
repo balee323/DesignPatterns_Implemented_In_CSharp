@@ -5,12 +5,12 @@ using System.Threading;
 
 namespace DesignPatterns
 {
-    //Singleton Pattern (not thread safe)
+    //Singleton Pattern (thread safe)
     public class SingletonSafeBrian
     {
-        //this must be static since the a static method uses this variable
         private static SingletonSafeBrian _singletonSafeBrian = null;
 
+        //notice use of private constructor
         private SingletonSafeBrian() {}
 
         public static SingletonSafeBrian Blee

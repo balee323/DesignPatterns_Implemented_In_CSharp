@@ -23,7 +23,6 @@ namespace DesignPatterns.DecoratorPattern.MultiDecoratedStockGrabber
 
             dynamic stockDataJSONObj = JObject.Parse(rawStockData);
 
-            //string today = GetEasternDate();
             string today = DateTime.Now.AddDays(-7).ToString("2022-01-21");
 
             var stockMetaInfo = stockDataJSONObj["Meta Data"];

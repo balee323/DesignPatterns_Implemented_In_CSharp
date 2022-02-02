@@ -1,0 +1,74 @@
+Software Design Patterns:
+
+-Show the levels of learning: 
+1. Don't know what you don't know
+2. Your eyes are opened
+3. Frantic use of learned skill all over the place
+4. Just another tool in your toolbox
+
+**If you are noticing you type "new" quite often, you might be creating tight coupling.
+
+1. Good ole Singleton Pattern (or is an antipattern?) -
+
+2. Factory Pattern(s) -"A factory is an object for creating objects" - Wikipedia.   
+Separate the client from the object creation it uses.
+There are 3 versions: simple factory, factory method, abstract factory. (pluralsight)
+If your class makes use of many concrete classes, than the class is more brittle and not really closed for modification.--Head First Design Patterns (HFDD).
+
+
+
+
+3. Adapter Pattern - 
+"Adapters convert the interface of one class into an interface a client expects." -- Steve Smith (pluralsight)
+
+Electrical adapters for different kinds of powerplugs are real-world examples of an electrical adapter.  The device requires a specific voltage and pysical plug.
+An appropriate power adapter is required for a USA designed device to work in an EU designed power outlet.
+
+Wrapper is another term that is often used also.
+
+Polymorphism: Avoid complex conditional logic by using polymorphism.
+Loose Coupling: Loose coupling of dependencies. We want to avoid creating objects in our classes to avoid breaking solid principles (Closed for modification)
+Testing: Use of this pattern can improve testability of our client code. Infrastructure gets abstracted away allowing for unit-testable code.
+
+SOLID principles followed:  Single Responsibility, Open/Closed, and Interface Segregation principles.
+
+2 Types of Adapter patters: Object Adapters and Class Adapters
+-Object Adapters will be the most common patterns and the patterns most C# developers will use.
+-Class Adapters inherit from 2 parents (double inheritance), but this can be modified to use an Interface implementation and single inheritance to work in C#.
+-I won't be showing Class Adapter Pattern
+
+Object Adapters (create instances of the incompatible type)
+Service Provice Object Adapters:
+1. Find a common result type that can be returned from sources
+2. Create an interface for that common type
+3. Create concrete adapter classes that implement the interface
+4. Use the Interface reference object in your client code and intantiate the concrete adapter classes.
+5. Call the common functions from the interface referenced objects.
+
+Result Types Object Adapters:
+1. Determine which class will be the base class
+2. Create an Adapter class that will inherit from the base class
+3. Make the functions/properties virtual on the base class
+
+
+
+4. Decorator Pattern - 
+Use cases: Adding a cache layer or logging layer to an object.
+
+SOLID principles followed:  Single Responsibility
+
+
+5. Strategy Pattern - 
+
+6. State Pattern - 
+
+7. Builder Pattern -
+
+8. Observer Pattern
+
+
+bonus:
+Repository pattern
+Bridge pattern
+Proxy Pattern
+Facade Pattern

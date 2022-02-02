@@ -2,6 +2,7 @@
 using DesignPatterns.AdapterPattern.ObjectAdapters.DataModelExample;
 using DesignPatterns.Examples_of_use;
 using DesignPatterns.FactoryPattern;
+using DesignPatterns.FactoryPatterns.AbstractFactoryPattern;
 using DesignPatterns.FactoryPatterns.FactoryMethodPattern;
 
 namespace DesignPatterns
@@ -10,23 +11,19 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            //**Singleton Design Pattern
-            //new SingletonInAction();
-            ClearConsole();
-
 
             //**Factory Design Pattern(s)
             //TheProblem theProblem = new TheProblem();
             //theProblem.PurchaseDuck(Senario.Hunting);
             ClearConsole();
-
             //new FactoryMethodPatternInAction().ShowAllComputerDisplays();
-
+            ClearConsole();
+            //new AbstractFactoryPatternInAction().ShowAllComputerDisplays();
             ClearConsole();
 
 
             //**Adapter Pattern
-            var bankStatement =  new DataModelAdapter_InAction().GetBankStatement();
+            //var bankStatement =  new DataModelAdapter_InAction().GetBankStatement();
 
 
 

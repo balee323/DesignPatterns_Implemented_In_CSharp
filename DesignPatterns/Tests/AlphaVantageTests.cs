@@ -25,18 +25,5 @@ namespace DesignPatterns.StockGrabber.Tests
             Assert.IsNotNull(stockdata);
         }
 
-
-        [Test]
-        public async Task Get_AmdStockPrice_StockPrice_and_AMD_NotNull()
-        {
-            var stockdata = await _client.GetLatestStockData("AMD");
-
-
-            Assert.IsTrue(stockdata.Item2.Symbol == "AMD");
-            Assert.IsNotNull(stockdata.Item1.High);
-
-        }
-
-
     }
 }
