@@ -1,6 +1,5 @@
 ﻿using System;
 using DesignPatterns.AdapterPattern.ObjectAdapters.DataModelExample;
-using DesignPatterns.Examples_of_use;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.FactoryPatterns.AbstractFactoryPattern;
 using DesignPatterns.FactoryPatterns.FactoryMethodPattern;
@@ -11,6 +10,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            ClearConsole();
 
             //**Factory Design Pattern(s)
             //TheProblem theProblem = new TheProblem();
@@ -18,7 +18,7 @@ namespace DesignPatterns
             ClearConsole();
             //new FactoryMethodPatternInAction().ShowAllComputerDisplays();
             ClearConsole();
-            //new AbstractFactoryPatternInAction().ShowAllComputerDisplays();
+            new AbstractFactoryPatternInAction().ShowAllComputerDisplays();
             ClearConsole();
 
 

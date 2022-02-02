@@ -3,60 +3,95 @@
     //This uses object composition -- an interface
     public interface IComputerSystemFactory
     {
-        IComputerSystem CreateComputerSystem(SystemType systemType, Language language);
+        //There's multiple Factory Methods.  This is the difference vs Factory Method Pattern.
+        IComputerSystem CreateComputerSystem(SystemType systemType, Language language, IDisplayPanel displayPanel);
         IComputerSystem CreateComputerSystem(SystemType systemType);
+        IDisplayPanel CreateDisplayPanel(SystemType systemType);
     }
 
     public class MobileComputerSystemFactory : IComputerSystemFactory
     {
-        public  IComputerSystem CreateComputerSystem(SystemType systemType, Language language)
+
+        public IDisplayPanel CreateDisplayPanel(SystemType systemType)
         {
             if (systemType == SystemType.Android)
             {
-                return new Android(language, 80, 30); //additional settings can be abstracted away
+                return new AndroidDisplayPanel(80, 30);
             }
             if (systemType == SystemType.Iphone)
             {
-                return new IPhone(language, 80, 40);
+                return new IphoneDisplayPanel(80, 40);
             }
 
             //"Invalid mobile system, defaulting to Android";
-            return new Android(language, 80, 30);
+            return new AndroidDisplayPanel(80, 30);
+        }
+
+        public  IComputerSystem CreateComputerSystem(SystemType systemType, Language language, IDisplayPanel displayPanel)
+        {
+            if (systemType == SystemType.Android)
+            {
+                return new Android(language, displayPanel);
+            }
+            if (systemType == SystemType.Iphone)
+            { 
+                return new IPhone(language, displayPanel);
+            }
+
+            //"Invalid mobile system, defaulting to Android";
+            return new Android(language, displayPanel);
         }
 
         public IComputerSystem CreateComputerSystem(SystemType systemType)
         {
-            return CreateComputerSystem(systemType, Language.English);
-        }
+            return CreateComputerSystem(systemType, Language.English, new AndroidDisplayPanel(80, 30));
+        }   
     }
-
 
     public class DesktopComputerSystemFactory : IComputerSystemFactory
     {
-        public IComputerSystem CreateComputerSystem(SystemType systemType, Language language)
+        public IDisplayPanel CreateDisplayPanel(SystemType systemType)
         {
             if (systemType == SystemType.IBM)
             {
-                return new IBM(language);
+                return new IMBDisplayPanel();
             }
             if (systemType == SystemType.Commodore64)
             {
-                return new Commodore64(language);
+                return new Commodore64DisplayPanel();
             }
             if (systemType == SystemType.OneHertzSystem)
             {
-                return new OneHertzSystem(language);
+                return new OneHertzSystemDisplayPanel();
             }
 
             //"Invalid mobile system, defaulting to IBM";
-            return new IBM(language);
+            return new IMBDisplayPanel();
+        }
+
+        public IComputerSystem CreateComputerSystem(SystemType systemType, Language language, IDisplayPanel displayPanel)
+        {
+            if (systemType == SystemType.IBM)
+            {
+                return new IBM(language, displayPanel);
+            }
+            if (systemType == SystemType.Commodore64)
+            {
+                return new Commodore64(language, displayPanel);
+            }
+            if (systemType == SystemType.OneHertzSystem)
+            {
+                return new OneHertzSystem(language, displayPanel);
+            }
+
+            //"Invalid mobile system, defaulting to IBM";
+            return new IBM(language, displayPanel);
         }
 
         public IComputerSystem CreateComputerSystem(SystemType systemType)
         {
-            return CreateComputerSystem(systemType, Language.English);
-        }
-
+            return CreateComputerSystem(systemType, Language.English, new IMBDisplayPanel());
+        }   
     }
 
 }

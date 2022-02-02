@@ -22,44 +22,47 @@ namespace DesignPatterns.FactoryPatterns.AbstractFactoryPattern
 
     public interface IComputerSystem
     {
+        void PowerOn();
+        void PowerOff();
         void PrintOutName(string name);
         void PrintOutMessage();
+        bool IsPoweredOn { get; }
     }
 
 
     public class Commodore64 : IComputerSystem
     {
         private Language _language;
-        public Commodore64(Language language)
+        private IDisplayPanel _displayPanel;
+
+        public bool IsPoweredOn { get; private set;} = false;
+        public Commodore64(Language language, IDisplayPanel displayPanel)
         {
             _language = language;
+            _displayPanel = displayPanel;
         }
+
+        public void PowerOn()=> IsPoweredOn = true;
+        public void PowerOff() => IsPoweredOn = false;
 
         public void PrintOutMessage()
         {
-            if (_language == Language.German)
+            if (_language == Language.German && IsPoweredOn)
             {
-                Console.WriteLine("Hallo, dies ist eine Demo für die PrintLine API.");
-                Console.WriteLine("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
+                _displayPanel.DisplayText("Hallo, dies ist eine Demo für die PrintLine API.");
+                _displayPanel.DisplayText("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
             }
-            else
+            else if (IsPoweredOn)
             {
-                Console.WriteLine("Hello, this is a demo for PrintLine API.");
-                Console.WriteLine("This is message is appearing in compatibility mode for each system.");
+                _displayPanel.DisplayText("Hello, this is a demo for PrintLine API.");
+                _displayPanel.DisplayText("This is message is appearing in compatibility mode for each system.");
             }
-
-            Thread.Sleep(1000);
-            Console.Clear();
         }
 
         public void PrintOutName(string name)
         {
-            Console.ResetColor();
-            Console.Title = this.GetType().Name;
-            Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine(name);
-            Thread.Sleep(1000);
+            if (IsPoweredOn)
+                _displayPanel.DisplayText(name);
         }
     }
 
@@ -67,36 +70,35 @@ namespace DesignPatterns.FactoryPatterns.AbstractFactoryPattern
     public class IBM : IComputerSystem
     {
         private Language _language;
-        public IBM(Language language)
+        private IDisplayPanel _displayPanel;
+        public bool IsPoweredOn { get; private set; } = false;
+        public IBM(Language language, IDisplayPanel displayPanel)
         {
             _language = language;
+            _displayPanel = displayPanel;
         }
+
+        public void PowerOn() => IsPoweredOn = true;
+        public void PowerOff() => IsPoweredOn = false;
 
         public void PrintOutMessage()
         {
-            if (_language == Language.German)
+            if (_language == Language.German && IsPoweredOn)
             {
-                Console.WriteLine("Hallo, dies ist eine Demo für die PrintLine API.");
-                Console.WriteLine("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
+                _displayPanel.DisplayText("Hallo, dies ist eine Demo für die PrintLine API.");
+                _displayPanel.DisplayText("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
             }
-            else
+            else if (IsPoweredOn)
             {
-                Console.WriteLine("Hello, this is a demo for PrintLine API.");
-                Console.WriteLine("This is message is appearing in compatibility mode for each system.");
+                _displayPanel.DisplayText("Hello, this is a demo for PrintLine API.");
+                _displayPanel.DisplayText("This is message is appearing in compatibility mode for each system.");
             }
-
-            Thread.Sleep(1000);
-            Console.Clear();
         }
 
         public void PrintOutName(string name)
         {
-            Console.ResetColor();
-            Console.Title = this.GetType().Name;
-            Console.BackgroundColor = ConsoleColor.DarkMagenta;
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(name.ToUpper());
-            Thread.Sleep(1000);
+            if (IsPoweredOn)
+                _displayPanel.DisplayText(name);
         }
     }
 
@@ -104,124 +106,109 @@ namespace DesignPatterns.FactoryPatterns.AbstractFactoryPattern
     public class OneHertzSystem : IComputerSystem
     {
         private Language _language;
-        public OneHertzSystem(Language language)
+        private IDisplayPanel _displayPanel;
+        public bool IsPoweredOn { get; private set; } = false;
+
+        public OneHertzSystem(Language language, IDisplayPanel displayPanel)
         {
             _language = language;
+            _displayPanel = displayPanel;
         }
+
+        public void PowerOn() => IsPoweredOn = true;
+        public void PowerOff() => IsPoweredOn = false;
 
         public void PrintOutMessage()
         {
-            if (_language == Language.German)
+            if (_language == Language.German && IsPoweredOn)
             {
-                Console.WriteLine("Hallo, dies ist eine Demo für die PrintLine API.");
-                Console.WriteLine("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
+                _displayPanel.DisplayText("Hallo, dies ist eine Demo für die PrintLine API.");
+                _displayPanel.DisplayText("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
             }
-            else
+            else if (IsPoweredOn)
             {
-                Console.WriteLine("Hello, this is a demo for PrintLine API.");
-                Console.WriteLine("This is message is appearing in compatibility mode for each system.");
+                _displayPanel.DisplayText("Hello, this is a demo for PrintLine API.");
+                _displayPanel.DisplayText("This is message is appearing in compatibility mode for each system.");
             }
-
-            Thread.Sleep(1000);
-            Console.Clear();
         }
 
         public void PrintOutName(string name)
         {
-            Console.ResetColor();
-            Console.Title = this.GetType().Name;
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"___{name.ToLower()}___");
-            Thread.Sleep(1000);
+            if (IsPoweredOn)
+                _displayPanel.DisplayText(name);
         }
     }
 
 
     public class Android : IComputerSystem
     {
-        private int _width, _height;
         private Language _language;
-        public Android(Language language, int width, int height)
+        private IDisplayPanel _displayPanel;
+        public bool IsPoweredOn { get; private set; } = false;
+
+        public Android(Language language, IDisplayPanel displayPanel)
         {
             _language = language;
-            _width = width;
-            _height = height;
+            _displayPanel = displayPanel;
         }
+
+        public void PowerOn() => IsPoweredOn = true;
+        public void PowerOff() => IsPoweredOn = false;
+
         public void PrintOutMessage()
         {
-            if (_language == Language.German)
+            if (_language == Language.German && IsPoweredOn)
             {
-                Console.WriteLine("Hallo, dies ist eine Demo für die PrintLine API.");
-                Console.WriteLine("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
+                _displayPanel.DisplayText("Hallo, dies ist eine Demo für die PrintLine API.");
+                _displayPanel.DisplayText("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
             }
-            else
+            else if (IsPoweredOn)
             {
-                Console.WriteLine("Hello, this is a demo for PrintLine API.");
-                Console.WriteLine("This is message is appearing in compatibility mode for each system.");
+                _displayPanel.DisplayText("Hello, this is a demo for PrintLine API.");
+                _displayPanel.DisplayText("This is message is appearing in compatibility mode for each system.");
             }
-
-            Thread.Sleep(1000);
-            Console.Clear();
         }
-
 
         public void PrintOutName(string name)
         {
-            Console.ResetColor();
-            Console.Title = this.GetType().Name;
-            Console.WindowWidth = _width;
-            Console.WindowHeight = _height;
-            Console.Beep();
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine($"___{name.ToLower()}___");
-            Thread.Sleep(1000);
+            if (IsPoweredOn)
+                _displayPanel.DisplayText(name);
         }
     }
 
-
     public class IPhone : IComputerSystem
     {
-        private int _width, _height;
+        public bool IsPoweredOn { get; private set; } = false;
         private Language _language;
+        private IDisplayPanel _displayPanel;
 
-        public IPhone(Language language, int width, int height)
+        public IPhone(Language language, IDisplayPanel displayPanel)
         {
             _language = language;
-            _width = width;
-            _height = height;
+            _displayPanel = displayPanel;
         }
+
+        public void PowerOn() => IsPoweredOn = true;
+        public void PowerOff() => IsPoweredOn = false;
 
         public void PrintOutMessage()
         {
-            if (_language == Language.German)
+            if (_language == Language.German && IsPoweredOn)
             {
-                Console.WriteLine("Hallo, dies ist eine Demo für die PrintLine API.");
-                Console.WriteLine("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
+                _displayPanel.DisplayText("Hallo, dies ist eine Demo für die PrintLine API.");
+                _displayPanel.DisplayText("Diese Meldung erscheint im Kompatibilitätsmodus für jedes System.");
             }
-            else
+            else if(IsPoweredOn)
             {
-                Console.WriteLine("Hello, this is a demo for PrintLine API.");
-                Console.WriteLine("This is message is appearing in compatibility mode for each system.");
+                _displayPanel.DisplayText("Hello, this is a demo for PrintLine API.");
+                _displayPanel.DisplayText("This is message is appearing in compatibility mode for each system.");
             }
-
-            Thread.Sleep(1000);
-            Console.Clear();
         }
 
         public void PrintOutName(string name)
         {
-            Console.ResetColor();
-            Console.Title = this.GetType().Name;
-            Console.WindowWidth = _width;
-            Console.WindowHeight = _height;
-            Console.Beep();
-            Console.Beep();
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine($"___{name.ToLower()}___");
-            Thread.Sleep(1000);
+            if (IsPoweredOn)
+                _displayPanel.DisplayText(name);
         }
     }
 
