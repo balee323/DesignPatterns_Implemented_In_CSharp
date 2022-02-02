@@ -4,19 +4,24 @@ using System.Text;
 
 namespace DesignPatterns.AdapterPattern.ObjectAdapters.DataModelExample
 {
+ 
+    /*
+    1. Determine which class will be the base class
+    2. Create an Adapter class that will inherit from the base class
+    3. Make the functions/properties virtual on the base class
+    */
+
     public class DataModelAdapter_InAction
     {
 
         public BankStatement GetBankStatement()
         {
-
             BankOfBleeStatement bankOfBlee = GetBankOfBleeStatement();
 
             //All the conversion occurs in the getters/setters (properties)
             BankStatement bankStatement = new BankOfBleeToBankStatementAdapter(bankOfBlee); 
 
             return bankStatement;
-
         }
 
         private BankOfBleeStatement GetBankOfBleeStatement()

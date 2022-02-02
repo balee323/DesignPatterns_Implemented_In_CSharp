@@ -24,6 +24,7 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
             
             set
             {
+                //converting occurs when setting the name as it needs to be first and last name.
                 string fullName = value;
                 string[] nameParts = fullName.Split(' ');
                 _bankOfBleeStatement.FirstName = nameParts[0];
@@ -31,6 +32,7 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
             }                      
         }
 
+        //most conversions will hopefully be straight-foward like this one
         public override string AccountType
         {
             get => _bankOfBleeStatement.Type;
@@ -43,6 +45,8 @@ namespace DesignPatterns.AdapterPattern.ObjectAdapters
             set => _bankOfBleeStatement.AccountBeganOn = value; 
         }
 
+
+        //This conversion is tricky since it goes from  2 properties to 1 property when converting.
         public override List<Tran> Transactions
         { 
             get
