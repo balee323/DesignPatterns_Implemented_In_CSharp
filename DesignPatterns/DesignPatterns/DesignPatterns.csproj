@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AdapterPattern\ClassAdapters\" />
+    <Folder Include="AdapterPattern\ClassAdapters - not implemented\" />
     <Folder Include="StatePattern\" />
     <Folder Include="StrategyPattern\" />
   </ItemGroup>

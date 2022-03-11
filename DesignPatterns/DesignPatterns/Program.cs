@@ -26,20 +26,21 @@ namespace DesignPatterns
             //=================================================================================
             //** Decorator
 
-            //show stock grabber without decorator(s)
+            //show stock grabber without decorator(s) -- don't need to run it
 
             //---Single decorator (add a logger)
-            single.IAlphaVantageClient _clientWithLogger = new single.AlphaVantageLoggingDecorator(new single.AlphaVantageClient());
-            var stockdata = _clientWithLogger.GetLatestStockData("AMD").Result;
+            //single.IAlphaVantageClient _clientWithLogger = new single.AlphaVantageLoggingDecorator(new single.AlphaVantageClient());
+            //var stockdata = _clientWithLogger.GetLatestStockData("AMD").Result;
 
-            ;
+            
+            
             //---Multi decorator (logger and memory cache)
-            IMemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
+           // IMemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
             //build it like an onion
-            multi.IAlphaVantageClient client = new multi.AlphaVantageClient();
-            multi.IAlphaVantageClient clientWithLogger = new multi.AlphaVantageLoggingDecorator(client);
-            multi.IAlphaVantageClient _clientWithCache = new multi.AlphaVantageCachingDecorator(clientWithLogger, memoryCache);
-
+           // multi.IAlphaVantageClient client = new multi.AlphaVantageClient();
+            //multi.IAlphaVantageClient clientWithLogger = new multi.AlphaVantageLoggingDecorator(client);
+           // multi.IAlphaVantageClient _clientWithCache = new multi.AlphaVantageCachingDecorator(clientWithLogger, memoryCache);
+            
 
 
             //=================================================================================
@@ -52,7 +53,7 @@ namespace DesignPatterns
             ClearConsole();
             //new FactoryMethodPatternInAction().ShowAllComputerDisplays();
             ClearConsole();
-            //new AbstractFactoryPatternInAction().ShowAllComputerDisplays();
+            new AbstractFactoryPatternInAction().ShowAllComputerDisplays();
             ClearConsole();
 
 
@@ -67,7 +68,7 @@ namespace DesignPatterns
 
             //=================================================================================
             //**Observer pattern
-            //new ObserverPatternInAction().BargainAlarm();
+            new ObserverPatternInAction().BargainAlarm();
 
 
             Console.WriteLine("press any key to exit.");

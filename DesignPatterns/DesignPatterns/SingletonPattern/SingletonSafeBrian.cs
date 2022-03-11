@@ -5,7 +5,8 @@ using System.Threading;
 
 namespace DesignPatterns
 {
-    //Singleton Pattern (thread safe)
+    //Singleton Pattern (thread safe) 
+    //The object handles its instantiation by itself. 
     public class SingletonSafeBrian
     {
         private static SingletonSafeBrian _singletonSafeBrian = null;
